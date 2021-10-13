@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dining Philosopher</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- tailwind -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flex text-white">
+      <div
+        class="left text-center flex flex-col justify-center flex-1 bg-gray-200"
+        style="background-image: url('./img/bg.jpg'); background-size: cover"
+      >
+        <div class="circle-container self-center relative">
+          <!-- philosophers -->
+          <div
+            class="
+              circle
+              absolute
+              philosopher-0
+              philosophers-img-container
+              top-0
+              -mt-40
+              m-44
+              h-32
+              w-32
+              rounded-full
+            "
+          >
+            <img
+              src="./img/sticker/0.webp"
+              class="
+                h-full
+                object-cover
+                rounded-full
+                filter
+                drop-shadow-lg
+                border-4 border-yellow-800
+              "
+              title="philosopher-0"
+            />
+          </div>
+          <div
+            class="
+              circle
+              absolute
+              philosopher-1
+              philosophers-img-container
+              top-0
+              right-0
+              -mr-36
+              mt-36
+              h-32
+              w-32
+              rounded-full
+            "
+          >
+            <img
+              src="./img/sticker/1.gif"
+              class="
+                h-full
+                object-cover
+                rounded-full
+                filter
+                drop-shadow-lg
+                border-4 border-yellow-800
+              "
+              title="philosopher-1"
+            />
+          </div>
+          <div
+            class="
+              circle
+              absolute
+              philosopher-2
+              philosophers-img-container
+              bottom-0
+              right-0
+              -mb-24
+              -mr-4
+              h-32
+              w-32
+              rounded-full
+            "
+          >
+            <img
+              src="./img/sticker/2.webp"
+              class="
+                h-full
+                object-cover
+                rounded-full
+                filter
+                drop-shadow-lg
+                border-4 border-yellow-800
+              "
+              title="philosopher-2"
+            />
+          </div>
+          <div
+            class="
+              circle
+              absolute
+              philosopher-3
+              philosophers-img-container
+              bottom-0
+              left-0
+              -mb-24
+              -ml-4
+              h-32
+              w-32
+              rounded-full
+            "
+          >
+            <img
+              src="./img/sticker/3.webp"
+              class="
+                h-full
+                object-cover
+                rounded-full
+                filter
+                drop-shadow-lg
+                border-4 border-yellow-800
+              "
+              title="philosopher-3"
+            />
+          </div>
+          <div
+            class="
+              circle
+              absolute
+              philosopher-4
+              philosophers-img-container
+              top-0
+              left-0
+              -ml-36
+              mt-36
+              h-32
+              w-32
+              rounded-full
+            "
+          >
+            <img
+              src="./img/sticker/4.webp"
+              class="
+                h-full
+                object-cover
+                rounded-full
+                filter
+                drop-shadow-lg
+                border-4 border-yellow-800
+              "
+              title="philosopher-4"
+            />
+          </div>
+          <!-- center circle -->
+          <div
+            class="
+              circle
+              bg-gray-400
+              grid grid-cols-3 grid-rows-3
+              rounded-full
+              place-items-center
+              filter
+              drop-shadow-lg
+              border-4 border-yellow-800
+            "
+            style="
+              height: 30rem;
+              width: 30rem;
+              background-image: url('./img/table-bg.png');
+              background-size: cover;
+            "
+            ;
+          >
+            <!-- ______________________ROW -1_______________________ -->
+            <!-- fork -0-->
+            <div class="h-24 w-24">
+              <img
+                src="./img/food/fork-0.png"
+                class="
+                  h-full
+                  fork-0
+                  transition-all
+                  duration-1000
+                  transform
+                  ml-12
+                  mt-8
+                "
+                title="fork-0"
+              />
+            </div>
+            <!-- food -->
+            <div
+              class="
+                circle
+                dishes
+                dish-0
+                h-24
+                w-
+                object-cover
+                rounded-full
+                transition-all
+                duration-1000
+                transform
+                border-4
+              "
+            >
+              <img
+                src="./img/food/1.png"
+                class="h-full filter drop-shadow-lg"
+                title="dish 0"
+              />
+            </div>
+            <!-- fork -1 -->
+            <div class="h-24 w-24">
+              <img
+                src="./img/food/fork-1.png"
+                class="
+                  h-full
+                  fork-1
+                  transition-all
+                  duration-1000
+                  transform
+                  -ml-12
+                  mt-8
+                "
+                title="fork-1"
+              />
+            </div>
+
+            <!-- ______________________ROW -2_______________________ -->
+            <!-- food && fork 4 -->
+            <div
+              class="
+                circle
+                dishes
+                dish-4
+                h-24
+                w-24
+                object-cover
+                rounded-full
+                transition-all
+                duration-1000
+                transform
+                border-4
+                ml-8
+                mb-12
+              "
+            >
+              <img
+                src="./img/food/2.png"
+                class="h-full filter drop-shadow-lg"
+                title="dish 4"
+              />
+              <img
+                src="./img/food/fork-4.png"
+                class="h-full fork-4 transition-all duration-1000 transform"
+                title="fork-4"
+              />
+            </div>
+            <!-- vacant-center -->
+            <div
+              class="
+                h-full
+                w-full
+                text-yellow-800
+                rounded-full
+                bg-white
+                flex
+                items-center
+                justify-center
+                flex-col
+              "
+            >
+              <h3 class="font-bold text-lg">The Dining Philosopher</h3>
+              <p class="text-sm font-semibold">Tonton Friends Theme</p>
+              <p class="text-xs">
+                URSM 3 CpE-A <br />
+                Group 2
+              </p>
+            </div>
+            <!-- food && fork 2 -->
+            <div
+              class="
+                circle
+                dishes
+                dish-1
+                h-24
+                w-24
+                object-cover
+                rounded-full
+                transition-all
+                duration-1000
+                transform
+                border-4
+                mr-8
+                mb-12
+              "
+            >
+              <img src="./img/food/3.png" class="h-full" title="dish 1" />
+              <img
+                src="./img/food/fork-2.png"
+                class="h-full fork-2 transition-all duration-1000 transform"
+                title="fork-2"
+              />
+            </div>
+
+            <!-- ______________________ROW -3_______________________ -->
+            <!-- food-->
+            <div
+              class="
+                circle
+                dishes
+                dish-3
+                h-24
+                w-24
+                object-cover
+                rounded-full
+                transition-all
+                duration-1000
+                transform
+                border-4
+                ml-36
+                mb-16
+              "
+            >
+              <img
+                src="./img/food/4.png"
+                class="h-full filter drop-shadow-lg"
+                title="dish 3"
+              />
+            </div>
+            <!-- fork center bottom neeed rotate -45 -->
+            <div class="h-24 w-24">
+              <img
+                src="./img/food/fork-3.png"
+                class="h-full fork-3 transition-all duration-1000 transform"
+                title="fork-3"
+              />
+            </div>
+            <div
+              class="
+                circle
+                dishes
+                dish-2
+                h-24
+                w-24
+                object-cover
+                rounded-full
+                transition-all
+                duration-1000
+                transform
+                border-4
+                mr-36
+                mb-16
+              "
+            >
+              <img
+                src="./img/food/5.png"
+                class="h-full filter drop-shadow-lg"
+                title="dish 2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right w-72 h-screen overflow-auto bg-gray-800">
+        <div class="p-2">
+          <div class="top-options flex items-center border-b border-white py-2">
+            <div class="w-1/2">
+              <label
+                ># Philosophers <input type="number" class="w-full text-black"
+              /></label>
+              <label
+                ><input type="checkbox" name="" id="random" checked /> Random
+                Eat</label
+              >
+            </div>
+            <div class="flex-1 flex justify-center">
+              <button
+                class="
+                  start-btn
+                  w-24
+                  px-4
+                  py-2
+                  rounded-full
+                  text-center
+                  uppercase
+                  bg-yellow-500
+                "
+              >
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="bottom-logs">
+            <div class="log-content text-sm mt-2">
+              <div
+                class="
+                  person-log-container
+                  flex
+                  h-12
+                  border-b border-gray-700
+                  p-2
+                  text-green-500
+                  items-center
+                  justify-center
+                  uppercase
+                "
+              >
+                Activity Log
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./src/script.js"></script>
+</html>
