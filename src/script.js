@@ -139,7 +139,7 @@ class Log {
                 "
               >
                 <div class="person-img object-cover">
-                  <img src="/img/${this.name}.png" class="h-full rounded-full" alt="" />
+                  <img src="./img/${this.name}.png" class="h-full rounded-full" alt="" />
                 </div>
                 <div class="person-activity self-center p-2 ${textColor}">
                   ${this.name} ${this.activity}
